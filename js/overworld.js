@@ -17,7 +17,10 @@ class Overworld {
       // As stored as an object, wrap in object.values
       Object.values(this.map.gameObjects).forEach((object) => {
         //every frame that runs, move object to the right
-        object.x += 0.5;
+        //object.x += 1; // thing below makes it dynamic
+        object.update({
+          arrow: this.directionInput.direction,
+        });
 
         object.sprite.draw(this.context);
       });
@@ -27,7 +30,6 @@ class Overworld {
 
       requestAnimationFrame(() => {
         step();
-        console.log("stepping");
       });
     };
     step();
@@ -37,6 +39,9 @@ class Overworld {
     console.log("init");
 
     this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+    this.directionInput = new DirectionInput();
+    this.directionInput.init(); // gets bindings on document
+    this.directionInput.direction;
     this.startGameLoop();
     /*
     =================

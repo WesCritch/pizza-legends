@@ -23,8 +23,9 @@ class Sprite {
 
   draw(context) {
     //16 - 8 is down to sprties being cut certain way
-    const x = this.gameObject.x; //* 16 - 8;
-    const y = this.gameObject.y; //* 16 - 8;
+    //const x = this.gameObject.x;
+    const x = this.gameObject.x * 2 - 8; // THESE PARTS CONTROLL SPEED FOR NOW;
+    const y = this.gameObject.y * 2 - 8;
     this.isLoaded &&
       context.drawImage(
         this.image,
